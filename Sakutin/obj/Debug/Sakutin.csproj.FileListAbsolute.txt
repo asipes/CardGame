@@ -1,0 +1,7 @@
+D:\Projects\RiderProjects\Sakutin\Sakutin\bin\Debug\Sakutin.exe
+D:\Projects\RiderProjects\Sakutin\Sakutin\bin\Debug\Sakutin.pdb
+D:\Projects\RiderProjects\Sakutin\Sakutin\obj\Debug\Sakutin.csproj.AssemblyReference.cache
+D:\Projects\RiderProjects\Sakutin\Sakutin\obj\Debug\Sakutin.csproj.SuggestedBindingRedirects.cache
+D:\Projects\RiderProjects\Sakutin\Sakutin\obj\Debug\Sakutin.csproj.CoreCompileInputs.cache
+D:\Projects\RiderProjects\Sakutin\Sakutin\obj\Debug\Sakutin.exe
+D:\Projects\RiderProjects\Sakutin\Sakutin\obj\Debug\Sakutin.pdb
