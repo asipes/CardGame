@@ -3,14 +3,16 @@ using System.Collections.Generic;
 
 namespace Sakutin
 {
-    public class CommonDeck : IDeck
+    public class Deck
     {
-        private readonly Queue<ICard> _cards = new();
+        private readonly Queue<Card> _cards = new();
 
-        public CommonDeck()
+        public Deck()
         {
             CreateDeck();
         }
+
+        public int Size => _cards.Count;
 
         public void Shuffle()
         {
@@ -18,15 +20,12 @@ namespace Sakutin
             TransferCardsToQueue(temporaryDeck);
         }
 
-        public List<ICard> RetrieveCards(int count)
+        public List<Card> RetrieveCards(int count)
         {
-            var retrievedCards = new List<ICard>();
+            var retrievedCards = new List<Card>();
 
-            if (count > _cards.Count)
-            {
-                count = _cards.Count;
-            }
-            
+            if (count > _cards.Count) count = _cards.Count;
+
             for (var i = 0; i < count; i++)
             {
                 var card = _cards.Dequeue();
@@ -36,12 +35,7 @@ namespace Sakutin
             return retrievedCards;
         }
 
-        public int Size()
-        {
-            return _cards.Count;
-        }
-
-        private void TransferCardsToQueue(List<ICard> deck)
+        private void TransferCardsToQueue(List<Card> deck)
         {
             var random = new Random();
             var deckSize = deck.Count;
@@ -51,15 +45,15 @@ namespace Sakutin
                 var currentDeckSize = deck.Count;
                 var nextCardIndex = random.Next(currentDeckSize);
                 var card = deck[nextCardIndex];
-                
+
                 _cards.Enqueue(card);
-                deck.Remove(card); 
+                deck.Remove(card);
             }
         }
 
-        private List<ICard> TransferCardsToList()
+        private List<Card> TransferCardsToList()
         {
-            var temporaryDeck = new List<ICard>();
+            var temporaryDeck = new List<Card>();
             var deckSize = _cards.Count;
 
             for (var i = 0; i < deckSize; i++)
@@ -77,12 +71,10 @@ namespace Sakutin
             var cardValueCount = Enum.GetNames(typeof(CardValue)).Length;
 
             for (var i = 0; i < cardTypeCount; i++)
+            for (var j = 0; j < cardValueCount; j++)
             {
-                for (var j = 0; j < cardValueCount; j++)
-                {
-                    var card = new CommonCard((CardType)i, (CardValue)j);
-                    _cards.Enqueue(card);
-                }
+                var card = new Card((CardType)i, (CardValue)j);
+                _cards.Enqueue(card);
             }
         }
     }

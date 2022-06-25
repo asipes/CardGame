@@ -4,7 +4,7 @@
     {
         public static void Main(string[] args)
         {
-            CommonCardTable сardTable = new CommonCardTable();
+            var сardTable = new CardTable();
             сardTable.Play();
         }
     }

@@ -4,24 +4,21 @@ namespace Sakutin
 {
     public class Croupier
     {
-        private IDeck _deck;
+        private readonly Deck _deck;
 
-        public Croupier(IDeck deck)
+        public Croupier(Deck deck)
         {
             _deck = deck;
         }
+
+        public int DeckSize => _deck.Size;
 
         public void ShuffleDeck()
         {
             _deck.Shuffle();
         }
 
-        public int DeckSize()
-        {
-            return _deck.Size();
-        }
-
-        public List<ICard> HandOverCards(int cardCount)
+        public List<Card> HandOverCards(int cardCount)
         {
             return _deck.RetrieveCards(cardCount);
         }

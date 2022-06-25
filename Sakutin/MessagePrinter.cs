@@ -6,12 +6,12 @@ namespace Sakutin
     {
         private MessagePrinter()
         {
-            
         }
 
-        public static void Print(string message, ConsoleColor color = default)
+        public static void Print(string message, ConsoleColor color = default, bool isNewLine = true)
         {
             Console.ForegroundColor = color;
+            if (isNewLine) message += "\n";
             Console.Write(message);
         }
     }

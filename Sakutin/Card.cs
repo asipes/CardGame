@@ -2,12 +2,9 @@ using System.Collections.Generic;
 
 namespace Sakutin
 {
-    public class CommonCard : ICard
+    public class Card
     {
-        private CardType Type { get; }
-        private CardValue Value { get; }
-
-        private readonly Dictionary<CardValue, string> _stringRepresentationOfValue = new()
+        private static readonly Dictionary<CardValue, string> StringRepresentationOfValue = new()
         {
             { CardValue.One, "Единица" },
             { CardValue.Two, "Двойка" },
@@ -21,7 +18,7 @@ namespace Sakutin
             { CardValue.Ten, "Десятка" }
         };
 
-        private readonly Dictionary<CardType, string> _stringRepresentationOfType = new()
+        private static readonly Dictionary<CardType, string> StringRepresentationOfType = new()
         {
             { CardType.Сircle, "круге." },
             { CardType.Square, "квадрате." },
@@ -29,30 +26,24 @@ namespace Sakutin
             { CardType.Cross, "кресте." }
         };
 
-        public CommonCard(CardType type, CardValue value)
+        private readonly CardValue _value;
+
+        public Card(CardType type, CardValue value)
         {
             Type = type;
-            Value = value;
+            _value = value;
         }
+
+        public CardType Type { get; }
 
         public int GetValueAsNumber()
         {
-            return (int)Value;
-        }
-
-        public int GetTypeAsNumber()
-        {
-            return (int)Type;
-        }
-
-        public new CardType GetType()
-        {
-            return Type;
+            return (int)_value;
         }
 
         public override string ToString()
         {
-            return $"{_stringRepresentationOfValue[Value]} в {_stringRepresentationOfType[Type]}";
+            return $"{StringRepresentationOfValue[_value]} в {StringRepresentationOfType[Type]}";
         }
     }
 }
