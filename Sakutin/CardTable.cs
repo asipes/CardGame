@@ -19,12 +19,12 @@ namespace Sakutin
             Start();
             var cardType = ChoseCardType();
             CalculateRange();
-            CardDelivery();
+            HandOverCards();
             var amount = CalculatePlayerCardAmount(cardType);
-            Final(amount);
+            DetermineWinner(amount);
         }
 
-        private void Final(int amount)
+        private void DetermineWinner(int amount)
         {
             if (IsWin(amount))
             {
@@ -48,7 +48,7 @@ namespace Sakutin
             return amount;
         }
 
-        private void CardDelivery()
+        private void HandOverCards()
         {
             MessagePrinter.Print("Тасую колоду!\n", ConsoleColor.Green);
             _croupier.ShuffleDeck();
@@ -96,8 +96,10 @@ namespace Sakutin
             }
 
             if (IsEmptyDeck())
+            {
                 MessagePrinter.Print("Упс! карты в колоде закончились! Чтож, пойдем считать твои очки!\n",
                     ConsoleColor.DarkMagenta);
+            }
         }
 
         private void CalculateRange()
@@ -124,7 +126,9 @@ namespace Sakutin
                 playerInput = Console.ReadLine();
 
                 if (IsValidCardType(playerInput) == false)
+                {
                     MessagePrinter.Print("Нет такой масти! Попробуй ещё раз!", ConsoleColor.Red);
+                }
             }
 
             return CardTypeResolver.Resolve(playerInput);

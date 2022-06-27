@@ -4,14 +4,13 @@ namespace Sakutin
 {
     public class MessagePrinter
     {
-        private MessagePrinter()
-        {
-        }
-
         public static void Print(string message, ConsoleColor color = default, bool isNewLine = true)
         {
             Console.ForegroundColor = color;
-            if (isNewLine) message += "\n";
+            if (isNewLine)
+            {
+                message += "\n";
+            }
             Console.Write(message);
         }
     }

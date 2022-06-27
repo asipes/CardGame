@@ -24,7 +24,10 @@ namespace Sakutin
         {
             var retrievedCards = new List<Card>();
 
-            if (count > _cards.Count) count = _cards.Count;
+            if (count > _cards.Count)
+            {
+                count = _cards.Count;
+            }
 
             for (var i = 0; i < count; i++)
             {

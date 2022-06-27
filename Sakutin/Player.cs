@@ -8,7 +8,10 @@ namespace Sakutin
 
         public void TakeCards(List<Card> cards)
         {
-            foreach (var card in cards) _hand.Add(card);
+            foreach (var card in cards)
+            {
+                _hand.Add(card);
+            }
         }
 
         public int CalculateAmountCardsValueByType(CardType cardType)
@@ -24,8 +27,12 @@ namespace Sakutin
             var retrievedCards = new List<Card>();
 
             foreach (var card in _hand)
+            {
                 if (card.Type == cardType)
+                {
                     retrievedCards.Add(card);
+                }
+            }
 
             return retrievedCards;
         }
@@ -34,7 +41,10 @@ namespace Sakutin
         {
             var amount = 0;
 
-            foreach (var card in cards) amount += card.GetValueAsNumber();
+            foreach (var card in cards)
+            {
+                amount += card.GetValueAsNumber();
+            }
 
             return amount;
         }
